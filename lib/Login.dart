@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -8,6 +9,27 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+
+  var email;
+  var password;
+
+  late final TextEditingController _email;
+  late final TextEditingController _password;
+
+  @override
+  void initState() {
+    _email = TextEditingController();
+    _password = TextEditingController(); // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _email.dispose();
+    _password.dispose();// TODO: implement dispose
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,6 +44,7 @@ class _LoginState extends State<Login> {
           child: Column(
             children: [
               TextField(
+                controller: _email,
                 decoration: InputDecoration(
                   alignLabelWithHint: true,
                   hintText: 'Enter your E-mail Address',
@@ -34,12 +57,14 @@ class _LoginState extends State<Login> {
                 height: 15,
               ),
               TextField(
+                controller: _password,
                 decoration: InputDecoration(
                   alignLabelWithHint: true,
                   hintText: 'Enter your password',
                   border: OutlineInputBorder(),
                   labelText: 'Enter your password',
-                  icon: Icon(Icons.password)
+                  icon: Icon(Icons.password),
+
                 ),
               ),
               SizedBox(
@@ -49,7 +74,12 @@ class _LoginState extends State<Login> {
               Row(
                 children: [
                   Text('New User?'),
-                  TextButton(onPressed: null, child: Text('Create an account'))
+                  TextButton(onPressed: () async {
+                    final email = _email.text;
+                    final password = _password.text;
+                    final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+                    print(userCredential);
+                    }, child: Text('Create an account'))
                 ],
               )
             ],
