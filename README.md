@@ -1,4 +1,4 @@
-# untitled
+# Flutter and Firebase project
 
 A new Flutter project.
 
