@@ -10,8 +10,8 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
 
-  var email;
-  var password;
+  //var email;
+  //var password;
 
   late final TextEditingController _email;
   late final TextEditingController _password;
@@ -44,6 +44,7 @@ class _LoginState extends State<Login> {
           child: Column(
             children: [
               TextField(
+                keyboardType: TextInputType.emailAddress,
                 controller: _email,
                 decoration: InputDecoration(
                   alignLabelWithHint: true,
@@ -58,28 +59,29 @@ class _LoginState extends State<Login> {
               ),
               TextField(
                 controller: _password,
+                obscureText: true,
+                enableSuggestions: false,
+                autocorrect: false,
                 decoration: InputDecoration(
                   alignLabelWithHint: true,
                   hintText: 'Enter your password',
                   border: OutlineInputBorder(),
                   labelText: 'Enter your password',
                   icon: Icon(Icons.password),
-
                 ),
               ),
               SizedBox(
                 height: 15,
               ),
-              ElevatedButton(onPressed: null, child: Text('Login')),
+              ElevatedButton(onPressed: () async {
+                final email = _email.text;
+                final password = _password.text;
+                final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+              }, child: Text('Login')),
               Row(
                 children: [
                   Text('New User?'),
-                  TextButton(onPressed: () async {
-                    final email = _email.text;
-                    final password = _password.text;
-                    final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
-                    print(userCredential);
-                    }, child: Text('Create an account'))
+                  TextButton(onPressed: null, child: Text('Create an account'))
                 ],
               )
             ],
