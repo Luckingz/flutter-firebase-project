@@ -84,7 +84,7 @@ class _LoginState extends State<Login> {
                         ElevatedButton(onPressed: () async {
                           final email = _email.text;
                           final password = _password.text;
-                          final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+                          final userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
                         }, child: Text('Login')),
                         Row(
                           children: [

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:untitled/ForgotPassword.dart';
 import 'package:untitled/Login.dart';
-import 'Register.dart';
+import 'package:untitled/Register.dart';
+import 'package:untitled/PasswordReset.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Register(),
+      home: Login(),
     );
   }
 }
