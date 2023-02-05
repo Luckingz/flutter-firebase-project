@@ -56,18 +56,17 @@ class _PasswordResetState extends State<PasswordReset> {
                                       alignLabelWithHint: true,
                                       hintText: 'Emter Reset Code',
                                       border: OutlineInputBorder(),
-                                      labelText: 'Enter your E-mail Address',
                                     ),
                                   ),
                                   actions: [
                                     TextButton(onPressed: () {Navigator.of(context).pop();}, child: Container(
-                                      color: Colors.amber,
+                                      color: Colors.blue,
                                       padding: EdgeInsets.all(14),
-                                      child: Text('Okay'),
+                                      child: Text('Okay', style: TextStyle(color: Colors.white),),
                                     ))
                                   ],
                                 ));
-                              }, child: Text('Enter Code'),),
+                              }, child: Text('Enter Reset Code'),),
                               SizedBox(
                                 height: 15,
                               ),
