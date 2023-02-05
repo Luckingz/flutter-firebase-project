@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:untitled/ForgotPassword.dart';
 import 'package:untitled/Login.dart';
 import 'package:untitled/Register.dart';
+import 'package:untitled/HomePage.dart';
 import 'package:untitled/PasswordReset.dart';
 
 Future<void> main() async {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: PasswordReset(),
+      home: HomePage(),
     );
   }
 }
