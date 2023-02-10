@@ -14,16 +14,39 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        //leading: Icon(Icons.),
         title: Text('HomePage'),
         actions: [
           Row(
             children: [
-              Icon(Icons.person),
               IconButton(onPressed: null, icon: Icon(Icons.settings,
               color: Colors.white,))
             ],
           )
         ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: const EdgeInsets.symmetric(vertical: 30.0),
+          children: [
+            Icon(Icons.account_circle, size: 60,),
+            Text('UserName',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold
+            ),),
+            ListTile(
+              
+            )
+          ],
+        ),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(20),
+        color: Colors.blue[200],
+        child: Text(
+          'Chat'
+        ),
       ),
     );
   }
