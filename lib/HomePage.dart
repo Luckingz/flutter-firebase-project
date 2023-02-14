@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:untitled/Login.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -29,14 +30,54 @@ class _HomePageState extends State<HomePage> {
         child: ListView(
           padding: const EdgeInsets.symmetric(vertical: 30.0),
           children: [
-            Icon(Icons.account_circle, size: 60,),
+            Icon(Icons.account_circle, size: 120,),
             Text('UserName',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontWeight: FontWeight.bold
             ),),
             ListTile(
-              
+              onTap: () {},
+              selectedColor: Theme.of(context).primaryColor,
+              selected: true,
+              contentPadding:
+              const EdgeInsets.symmetric(horizontal: 20, vertical: 1),
+              leading: const Icon(Icons.group),
+              title: Text('Groups',
+              style: TextStyle(
+                color: Colors.black
+              ),
+              ),
+            ),
+            ListTile(
+              onTap: () {},
+              selectedColor: Theme.of(context).primaryColor,
+              contentPadding:
+              const EdgeInsets.symmetric(horizontal: 20, vertical: 1),
+              leading: const Icon(Icons.group),
+              title: Text('Groups',
+                style: TextStyle(
+                    color: Colors.black
+                ),
+              ),
+            ),
+            ListTile(
+              onTap: () async {
+                await FirebaseAuth.instance.signOut();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Login()),
+                );
+              },
+              selectedColor: Theme.of(context).primaryColor,
+              contentPadding:
+              const EdgeInsets.symmetric(horizontal: 20, vertical: 1),
+              leading: const Icon(Icons.exit_to_app),
+              title: Text('Logout',
+                style: TextStyle(
+                    color: Colors.black
+                ),
+              ),
             )
           ],
         ),
