@@ -6,6 +6,7 @@ import 'package:untitled/Login.dart';
 import 'package:untitled/Register.dart';
 import 'package:untitled/HomePage.dart';
 import 'package:untitled/PasswordReset.dart';
+import 'package:untitled/ProfilePage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      home: ProfilePage(),
     );
   }
 }

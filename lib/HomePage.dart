@@ -63,11 +63,30 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               onTap: () async {
-                await FirebaseAuth.instance.signOut();
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Login()),
-                );
+                showDialog(context: context, builder: (context) {
+                  return AlertDialog(
+                  title: Text("Logout"),
+                    content: Text("Are you sure you want to Logout?"),
+                    actions: [
+                      TextButton(
+                        onPressed: () async {
+                          await FirebaseAuth.instance.signOut();
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => const Login()),
+                          );
+                        },
+                        child: Text('Yes'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context, false);
+                        },
+                        child: Text('No'),
+                      )
+                    ],
+                  );
+                });
               },
               selectedColor: Theme.of(context).primaryColor,
               contentPadding:
